@@ -55,8 +55,10 @@ services:
    
     environment:
         # Don't enclose values in quotes
-        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-127.0.0.1}
-        - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-false}
+        # - DIRECT_ADDRESS=${DIRECT_ADDRESS:-127.0.0.1}
+        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-192.168.100.203}
+        # - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-false}
+        - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-true}
         - WORKSPACE=${WORKSPACE:-/workspace}
         - WORKSPACE_SYNC=${WORKSPACE_SYNC:-false}
         - CF_TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:-}
@@ -77,8 +79,8 @@ services:
         - FORGE_PORT_HOST=${FORGE_PORT_HOST:-7860}
         - FORGE_PORT_LOCAL=${FORGE_PORT_LOCAL:-17860}
         - FORGE_METRICS_PORT=${FORGE_METRICS_PORT:-27860}
-        # - FORGE_URL=${FORGE_URL:-}
-        - FORGE_URL=http://0.0.0.0:7860/
+        - FORGE_URL=${FORGE_URL:-}
+        # - FORGE_URL=http://0.0.0.0:7860/
         - JUPYTER_PORT_HOST=${JUPYTER_PORT_HOST:-8888}
         - JUPYTER_METRICS_PORT=${JUPYTER_METRICS_PORT:-28888}
         - JUPYTER_URL=${JUPYTER_URL:-}

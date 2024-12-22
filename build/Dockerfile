@@ -29,13 +29,16 @@ ARG FORGE_BUILD_REF
 ENV FORGE_BUILD_REF=${FORGE_BUILD_REF}
 COPY --chown=0:1111 ./COPY_ROOT_1/ /
 ARG IMAGE_BASE
+RUN chmod +x /opt/ai-dock/bin/build/layer1/init.sh
 RUN set -eo pipefail && /opt/ai-dock/bin/build/layer1/init.sh | tee -a /var/log/build.log
 
 # Copy overrides and models into later layers for fast rebuilds
 COPY --chown=0:1111 ./COPY_ROOT_99/ /
+RUN chmod +x /opt/ai-dock/bin/build/layer99/init.sh
 RUN set -eo pipefail && /opt/ai-dock/bin/build/layer99/init.sh | tee -a /var/log/build.log
 
 ENV PYTHON_DEFAULT_VENV=forge
 
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.sh
+RUN chmod +x init.sh
 CMD ["init.sh"]

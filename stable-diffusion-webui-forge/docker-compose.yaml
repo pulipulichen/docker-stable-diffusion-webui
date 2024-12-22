@@ -29,8 +29,8 @@ services:
     
     volumes:
       - ./forge-src:/app/stable-diffusion-webui-forge
-      - ./../stable-diffusion-models/:/app/stable-diffusion-webui-forge/models
-      - ./../stable-diffusion-models/embeddings:/app/stable-diffusion-webui-forge/embeddings
+      - ./../stable-diffusion-models/:/app/stable-diffusion-webui-forge/stable-diffusion-webui/models
+      - ./../stable-diffusion-models/embeddings:/app/stable-diffusion-webui-forge/stable-diffusion-webui/embeddings
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

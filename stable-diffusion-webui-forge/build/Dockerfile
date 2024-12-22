@@ -45,6 +45,10 @@ ENV PYTHON_DEFAULT_VENV=forge
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 RUN chmod +x /opt/ai-dock/bin/*.sh
 
+# https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/6594#discussioncomment-4643626
+RUN pip install ninja
+RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
+
 # =================================================================
 
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.sh

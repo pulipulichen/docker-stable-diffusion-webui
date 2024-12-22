@@ -17,3 +17,4 @@ CMD ["/app/stable-diffusion-webui-forge/webui.sh", "-f", "--xformers"]
 
 RUN pip install xformers==0.0.28.post3
 RUN apt-get install libgl1 -y
+RUN apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6

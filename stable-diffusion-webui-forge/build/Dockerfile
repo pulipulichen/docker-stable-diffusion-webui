@@ -39,7 +39,13 @@ RUN set -eo pipefail && /opt/ai-dock/bin/build/layer99/init.sh | tee -a /var/log
 
 ENV PYTHON_DEFAULT_VENV=forge
 
+# =================================================================
+# 20241222-2133 布丁額外發現需要安裝的指令
+RUN pip install insightface==0.7.3
+
+# =================================================================
+
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.sh
-RUN ls
+
 # RUN chmod +x init.sh
 CMD ["init.sh"]

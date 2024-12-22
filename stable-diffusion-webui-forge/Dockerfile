@@ -13,3 +13,4 @@ RUN git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git
 CMD ["/app/stable-diffusion-webui-forge/webui.sh", "-f"]
 
 RUN apt-get install libgoogle-perftools4 libtcmalloc-minimal4 -y
+RUN apt-get install -y bc 

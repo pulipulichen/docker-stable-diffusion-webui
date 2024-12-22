@@ -22,8 +22,9 @@ services:
        reservations:
          devices:
            - driver: nvidia
-             count: all
-             capabilities: [gpu]
+             #  count: all
+             device_ids: ['0']
+             capabilities: [compute, utility]
 
     devices:
       - "/dev/dri:/dev/dri"

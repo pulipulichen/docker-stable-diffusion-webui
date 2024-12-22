@@ -15,5 +15,5 @@ WORKDIR /app/stable-diffusion-webui-forge
 
 CMD ["/app/stable-diffusion-webui-forge/webui.sh", "-f", "--xformers"]
 
-RUN pip install xformers=0.0.28.post3
+RUN pip install xformers==0.0.28.post3
 RUN apt-get install libgl1 -y

@@ -55,8 +55,8 @@ services:
    
     environment:
         # Don't enclose values in quotes
-        # - DIRECT_ADDRESS=${DIRECT_ADDRESS:-127.0.0.1}
-        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-192.168.100.203}
+        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-0.0.0.0}
+        # - DIRECT_ADDRESS=${DIRECT_ADDRESS:-192.168.100.203}
         # - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-false}
         - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-true}
         - WORKSPACE=${WORKSPACE:-/workspace}
@@ -65,7 +65,7 @@ services:
         - CF_QUICK_TUNNELS=${CF_QUICK_TUNNELS:-true}
         - CIVITAI_TOKEN=${CIVITAI_TOKEN:-}
         - HF_TOKEN=${HF_TOKEN:-}
-        - WEB_ENABLE_AUTH=${WEB_ENABLE_AUTH:-true}
+        - WEB_ENABLE_AUTH=${WEB_ENABLE_AUTH:-false}
         - WEB_ENABLE_HTTPS${WEB_ENABLE_HTTPS:-false}
         - WEB_USER=${WEB_USER:-user}
         - WEB_PASSWORD=${WEB_PASSWORD:-password}

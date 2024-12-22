@@ -11,3 +11,5 @@ RUN git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git
 # USER root
 
 CMD ["/app/stable-diffusion-webui-forge/webui.sh", "-f"]
+
+RUN sudo apt install --no-install-recommends google-perftools -y

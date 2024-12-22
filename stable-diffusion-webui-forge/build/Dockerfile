@@ -46,8 +46,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | b
 RUN chmod +x /opt/ai-dock/bin/*.sh
 
 # https://github.com/AUTOMATIC1111/stable-diffusion-webui/discussions/6594#discussioncomment-4643626
-RUN pip install ninja
-RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
+# RUN pip install ninja
+# RUN pip install -v -U git+https://github.com/facebookresearch/xformers.git@main#egg=xformers
+
+# https://www.bilibili.com/opus/803708902165184569
+RUN pip install xformers==0.0.28.post3
 
 # =================================================================
 

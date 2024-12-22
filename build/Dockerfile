@@ -40,5 +40,6 @@ RUN set -eo pipefail && /opt/ai-dock/bin/build/layer99/init.sh | tee -a /var/log
 ENV PYTHON_DEFAULT_VENV=forge
 
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.sh
-RUN chmod +x init.sh
+RUN ls
+# RUN chmod +x init.sh
 CMD ["init.sh"]

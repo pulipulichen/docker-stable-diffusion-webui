@@ -8,7 +8,7 @@ services:
       # context: ./  
     # image: pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
     
-    command: ["/app/stable-diffusion-webui-forge/webui.sh", "-f", "--xformers", "--listen", "--port", "4269"]
+    command: ["/app/stable-diffusion-webui-forge/webui.sh", "-f", "--xformers", "--listen"]
 
     ## For Nvidia GPU's - You probably want to uncomment this
     deploy:
@@ -26,10 +26,11 @@ services:
 
     ports:
       - 7860:7860
-      - 4269:4269
     
     volumes:
       - ./forge-src:/app/stable-diffusion-webui-forge
+      - ./../stable-diffusion-models/:/app/stable-diffusion-webui-forge/models
+      - ./../stable-diffusion-models/embeddings:/app/stable-diffusion-webui-forge/embeddings
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

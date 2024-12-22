@@ -41,7 +41,9 @@ ENV PYTHON_DEFAULT_VENV=forge
 
 # =================================================================
 # 20241222-2133 布丁額外發現需要安裝的指令
-RUN pip install insightface==0.7.3
+# RUN pip install insightface==0.7.3
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+RUN chmod +x /opt/ai-dock/bin/*.sh
 
 # =================================================================
 

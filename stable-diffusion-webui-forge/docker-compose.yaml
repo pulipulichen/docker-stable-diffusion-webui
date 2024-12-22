@@ -55,7 +55,7 @@ services:
    
     environment:
         # Don't enclose values in quotes
-        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-0.0.0.0}
+        - DIRECT_ADDRESS=${DIRECT_ADDRESS:-17.0.0.1}
         # - DIRECT_ADDRESS=${DIRECT_ADDRESS:-192.168.100.203}
         # - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-false}
         - DIRECT_ADDRESS_GET_WAN=${DIRECT_ADDRESS_GET_WAN:-true}

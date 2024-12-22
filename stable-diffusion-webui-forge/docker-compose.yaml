@@ -26,7 +26,8 @@ services:
     ports:
       - 7860:7860
     
-    # volumes:
+    volumes:
+      - ./src:/app/stable-diffusion-webui-forge
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

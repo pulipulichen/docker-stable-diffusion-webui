@@ -3,14 +3,14 @@ FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
 RUN apt-get update
 RUN apt-get install -y git
 
-RUN mkdir /app
-WORKDIR /app
+RUN apt-get install libgoogle-perftools4 libtcmalloc-minimal4 -y
+RUN apt-get install -y bc 
 
-RUN git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git
+RUN mkdir -p /app/stable-diffusion-webui-forge
+WORKDIR /app/stable-diffusion-webui-forge
+
+# RUN git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git
 
 # USER root
 
 CMD ["/app/stable-diffusion-webui-forge/webui.sh", "-f"]
-
-RUN apt-get install libgoogle-perftools4 libtcmalloc-minimal4 -y
-RUN apt-get install -y bc 

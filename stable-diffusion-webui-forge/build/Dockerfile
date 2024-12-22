@@ -57,4 +57,4 @@ RUN pip install xformers==0.0.28.post3
 # Keep init.sh as-is and place additional logic in /opt/ai-dock/bin/preflight.sh
 
 # RUN chmod +x init.sh
-CMD ["init.sh"]
+CMD ["init.sh", "--xformers"]

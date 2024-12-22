@@ -21,6 +21,7 @@ ARG PYTORCH_VERSION="2.4.0"
 ENV PYTORCH_VERSION="${PYTORCH_VERSION}"
 COPY --chown=0:1111 ./COPY_ROOT_0/ /
 ARG IMAGE_BASE
+RUN chmod +x /opt/ai-dock/bin/build/layer0/init.sh
 RUN set -eo pipefail && /opt/ai-dock/bin/build/layer0/init.sh | tee /var/log/build.log
 
 # Install software

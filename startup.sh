@@ -20,8 +20,8 @@ cd "$base_dir"
 # pwd
 cd ./stable-diffusion-webui-forge/
 
-# sudo docker compose down > /dev/null 2>&1
-# sudo docker compose up --build -d > /dev/null 2>&1
+sudo docker compose down > /dev/null 2>&1
+sudo docker compose up --build -d > /dev/null 2>&1
 
 # ===========
 

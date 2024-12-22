@@ -11,7 +11,7 @@ MAIL_FILE="${MAIL_DIR}/${USER}"
 
 # Check if the mail file exists
 if [[ -f $MAIL_FILE ]]; then
-    > "$MAIL_FILE"  # Truncate the file to remove all mail
+    sudo > "$MAIL_FILE"  # Truncate the file to remove all mail
     echo "All mail for user '$USER' has been cleared."
 else
     echo "No mail found for user '$USER'."

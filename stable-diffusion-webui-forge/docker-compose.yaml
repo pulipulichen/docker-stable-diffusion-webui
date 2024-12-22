@@ -27,7 +27,7 @@ services:
       - 7860:7860
     
     volumes:
-      - ./src:/app/stable-diffusion-webui-forge
+      - ./forge-src:/app/stable-diffusion-webui-forge
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

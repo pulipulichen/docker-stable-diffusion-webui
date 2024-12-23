@@ -13,7 +13,7 @@ find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "
             echo "Found $dir/$name.png with size 0. Removing it."
             rm "$dir/$name.png"
         else
-            echo "$dir/$name.png exists and is non-empty."
+            # echo "$dir/$name.png exists and is non-empty."
             continue
         fi
     fi

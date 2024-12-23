@@ -1,5 +1,4 @@
-FROM ubuntu:24.04
-
+FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
 
 RUN apt-get update
 

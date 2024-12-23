@@ -29,7 +29,7 @@ services:
       - ./../collections/:/app/stable-diffusion-webui/models
       - ./../collections/embeddings:/app/stable-diffusion-webui/embeddings
       - ./../collections/outputs:/app/stable-diffusion-webui/outputs
-      - ./../collections/ControlNet:/app/stable-diffusion-webui/extensions/sd-webui-controlnet/models
+      # - ./../collections/ControlNet:/app/stable-diffusion-webui/extensions/sd-webui-controlnet/models
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

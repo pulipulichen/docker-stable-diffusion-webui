@@ -1202,6 +1202,7 @@ class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
     hr_cfg: float = 1.0
     hr_distilled_cfg: float = 3.5
     force_task_id: str = None
+    resize_mode: str = "Crop and resize"
 
     cached_hr_uc = [None, None, None]
     cached_hr_c = [None, None, None]

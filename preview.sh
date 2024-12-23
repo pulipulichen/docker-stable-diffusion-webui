@@ -1,5 +1,12 @@
 #!/bin/bash
 
+script_dir=$(dirname "$0")
+
+# Change the current working directory to the script's location
+cd "$script_dir"
+
+# ===============
+
 # Search for all files with extensions .safetensors and .pt
 find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "*/@Recycle/*" ! -path "*/ControlNet/*" ! -path "*/VAE-approx/*" | while read -r file; do
     dir=$(dirname "$file")         # Get the directory of the file

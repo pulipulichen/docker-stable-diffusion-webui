@@ -11,7 +11,7 @@ find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "
         # Check if the existing PNG file size is 0
         if [ ! -s "$dir/$name.png" ]; then
             echo "Found $dir/$name.png with size 0. Removing it."
-            # rm "$dir/$name.png"
+            rm "$dir/$name.png"
         else
             echo "$dir/$name.png exists and is non-empty."
             continue
@@ -23,7 +23,7 @@ find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "
 
     if [ -n "$png" ]; then
         # Copy the found PNG to the same name as the .safetensors or .pt file
-        # cp "$png" "$dir/$name.png"
+        cp "$png" "$dir/$name.png"
         echo "Copied $png to $dir/$name.png"
     else
         echo "No PNG found with prefix $name in $dir"

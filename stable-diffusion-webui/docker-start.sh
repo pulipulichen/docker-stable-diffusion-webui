@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# python
+python -m pip version
 
-/app/webui.sh -f --xformers --listen --enable-insecure-extension-access --api --skip-torch-cuda-test
+# /app/webui.sh -f --xformers --listen --enable-insecure-extension-access --api --skip-torch-cuda-test

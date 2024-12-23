@@ -10,7 +10,6 @@ RUN apt install wget git python3 python3-venv libgl1 libglib2.0-0 -y
 RUN apt install python-is-python3 -y
 RUN python3 -m pip install torch==2.1.2 torchvision==0.16.2 --extra-index-url https://download.pytorch.org/whl/cu121
 RUN apt-get install libgoogle-perftools4 libtcmalloc-minimal4 -y
-RUN whereis python
 # RUN apt install python3.11 -y
 
 # RUN pip install insightface
@@ -19,9 +18,6 @@ RUN whereis python
 
 RUN mkdir -p /app/
 WORKDIR /app/
-
-RUN wget -q https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh
-RUN chmod +x /app/webui.sh
 
 # RUN git clone https://github.com/lllyasviel/stable-diffusion-webui-forge.git
 

@@ -386,6 +386,7 @@ class FakeInitialModel:
     def __init__(self):
         self.cond_stage_model = None
         self.chunk_length = 75
+        self.is_sdxl = False
 
     def get_prompt_lengths_on_ui(self, prompt):
         r = len(prompt.strip('!,. ').replace(' ', ',').replace('.', ',').replace('!', ',').replace(',,', ',').replace(',,', ',').replace(',,', ',').replace(',,', ',').split(','))

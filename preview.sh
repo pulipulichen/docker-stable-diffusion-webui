@@ -8,7 +8,7 @@ cd "$script_dir"
 # ===============
 
 # Search for all files with extensions .safetensors and .pt
-find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "*/@Recycle/*" ! -path "*/diffuers/*" ! -path "*/ControlNet/*" ! -path "*/VAE-approx/*" | while read -r file; do
+find ./collections -type f \( -name "*.safetensors" -o -name "*.pt" \) ! -path "*/@Recycle/*" ! -path "*/diffusers/*" ! -path "*/ControlNet/*" ! -path "*/VAE-approx/*" | while read -r file; do
     dir=$(dirname "$file")         # Get the directory of the file
     base=$(basename "$file")       # Get the filename
     name="${base%.*}"              # Remove the extension to get the prefix

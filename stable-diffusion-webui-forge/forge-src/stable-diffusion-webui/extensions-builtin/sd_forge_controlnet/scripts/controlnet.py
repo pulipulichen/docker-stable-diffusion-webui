@@ -568,7 +568,7 @@ class ControlNetForForgeOfficial(scripts.Script):
             print(p)
             print(pp)
             print(unit)
-            print(self.current_params[i])
+            # print(self.current_params[i])
             self.process_unit_after_every_sampling(p, unit, self.current_params[i], pp, *args, **kwargs)
             print('Processing ' + str(i) + ' units: after')
         return

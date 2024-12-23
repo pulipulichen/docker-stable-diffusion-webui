@@ -8,7 +8,7 @@ services:
       # context: ./  
     # image: pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
     
-    command: ["/app/stable-diffusion-webui-forge/webui.sh", "-f", "--xformers", "--listen", "--enable-insecure-extension-access", "--api"]
+    command: ["/app/docker-start.sh"]
 
     ## For Nvidia GPU's - You probably want to uncomment this
     deploy:
@@ -28,6 +28,7 @@ services:
       - 7860:7860
     
     volumes:
+      - ./docker-start.sh:/app/docker-start.sh
       - ./forge-src:/app/stable-diffusion-webui-forge
       - ./../collections/:/app/stable-diffusion-webui-forge/stable-diffusion-webui/models
       - ./../collections/embeddings:/app/stable-diffusion-webui-forge/stable-diffusion-webui/embeddings

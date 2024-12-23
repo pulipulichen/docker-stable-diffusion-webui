@@ -565,7 +565,7 @@ class ControlNetForForgeOfficial(scripts.Script):
     def postprocess_batch_list(self, p, pp, *args, **kwargs):
         # if self.curent_params is empty, do process()
         # if len(self.current_params) == 0:
-        #     self.process(p, *args, **kwargs)
+        self.process(p, *args, **kwargs)
 
         for i, unit in enumerate(self.get_enabled_units(args)):
             # print('Processing ' + str(i) + ' units: before')
@@ -573,6 +573,7 @@ class ControlNetForForgeOfficial(scripts.Script):
             # print(pp)
             # print(unit)
             # print(self.current_params)
+            # self.process_unit_after_every_sampling(p, unit, pp, self.current_params[i], *args, **kwargs)
             self.process_unit_after_every_sampling(p, unit, pp, *args, **kwargs)
             # print('Processing ' + str(i) + ' units: after')
         return

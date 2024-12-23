@@ -43,6 +43,7 @@ class PostProcessMaskOverlayArgs:
 class PostprocessBatchListArgs:
     def __init__(self, images):
         self.images = images
+        self.preprocessor = None
 
 
 @dataclass

@@ -564,7 +564,9 @@ class ControlNetForForgeOfficial(scripts.Script):
     @torch.no_grad()
     def postprocess_batch_list(self, p, pp, *args, **kwargs):
         for i, unit in enumerate(self.get_enabled_units(args)):
+            print('Processing ' + i + ' units: before')
             self.process_unit_after_every_sampling(p, unit, self.current_params[i], pp, *args, **kwargs)
+            print('Processing ' + i + ' units: after')
         return
 
     def postprocess(self, p, processed, *args):

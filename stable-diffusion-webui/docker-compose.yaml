@@ -26,9 +26,10 @@ services:
       - ./docker-start.sh:/app/docker-start.sh
       - ./webui.sh:/app/webui.sh
       - ./stable-diffusion-webui:/app/stable-diffusion-webui
-      - ./../collections/:/app/stable-diffusion-webui-forge/stable-diffusion-webui/models
-      - ./../collections/embeddings:/app/stable-diffusion-webui-forge/stable-diffusion-webui/embeddings
-      - ./../collections/outputs:/app/stable-diffusion-webui-forge/stable-diffusion-webui/outputs
+      - ./../collections/:/app/stable-diffusion-webui/models
+      - ./../collections/embeddings:/app/stable-diffusion-webui/embeddings
+      - ./../collections/outputs:/app/stable-diffusion-webui/outputs
+      - ./../collections/ControlNet:/app/stable-diffusion-webui/extensions/sd-webui-controlnet/models
     #   # Workspace
     #   - ./workspace:${WORKSPACE:-/workspace/}:rshared
     #   # You can share /workspace/storage with other non-WEBUI containers. See README

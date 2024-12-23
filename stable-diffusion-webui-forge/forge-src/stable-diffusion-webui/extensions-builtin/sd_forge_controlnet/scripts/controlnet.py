@@ -563,6 +563,10 @@ class ControlNetForForgeOfficial(scripts.Script):
 
     @torch.no_grad()
     def postprocess_batch_list(self, p, pp, *args, **kwargs):
+        # if self.curent_params is empty, do process()
+        if len(self.current_params) == 0:
+            self.process(p, *args, **kwargs)
+
         for i, unit in enumerate(self.get_enabled_units(args)):
             print('Processing ' + str(i) + ' units: before')
             print(p)

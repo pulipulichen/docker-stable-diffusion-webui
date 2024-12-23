@@ -7,6 +7,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa -y
 
 RUN apt-get update
 RUN apt install wget git python3 python3-venv libgl1 libglib2.0-0 -y
+RUN apt-get install -y pip
 # RUN apt install python3.11 -y
 
 # RUN pip install insightface

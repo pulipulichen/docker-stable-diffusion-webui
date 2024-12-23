@@ -13,6 +13,9 @@ RUN apt-get install -y libglib2.0-0 libsm6 libxrender1 libxext6
 RUN apt install nvidia-cuda-toolkit -y
 RUN pip install basicsr
 
+#RUN pip install https://download.pytorch.org/whl/nightly/rocm5.2/torch-2.0.0.dev20230209%2Brocm5.2-cp310-cp310-linux_x86_64.whl https://download.pytorch.org/whl/nightly/rocm5.2/torchvision-0.15.0.dev20230209%2Brocm5.2-cp310-cp310-linux_x86_64.whl
+
+# =========================
 
 RUN mkdir -p /app/stable-diffusion-webui-forge
 WORKDIR /app/

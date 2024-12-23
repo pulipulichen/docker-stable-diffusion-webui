@@ -569,7 +569,7 @@ class ControlNetForForgeOfficial(scripts.Script):
             print(pp)
             print(unit)
             print(self.current_params)
-            self.process_unit_after_every_sampling(p, unit, self.current_params[i], pp, *args, **kwargs)
+            self.process_unit_after_every_sampling(p, unit, pp, *args, **kwargs)
             print('Processing ' + str(i) + ' units: after')
         return
 

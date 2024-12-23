@@ -55,8 +55,8 @@ def image_grid(imgs, batch_size=1, rows=None):
     script_callbacks.image_grid_callback(params)
 
     w, h = map(max, zip(*(img.size for img in imgs)))
-    grid_background_color = ImageColor.getcolor(opts.grid_background_color, 'RGB')
-    grid = Image.new('RGB', size=(params.cols * w, params.rows * h), color=grid_background_color)
+    grid_background_color = ImageColor.getcolor(opts.grid_background_color, 'RGBA')
+    grid = Image.new('RGBA', size=(params.cols * w, params.rows * h), color=grid_background_color)
 
     for i, img in enumerate(params.imgs):
         img_w, img_h = img.size
@@ -249,7 +249,7 @@ def draw_prompt_matrix(im, width, height, all_prompts, margin=0):
     return draw_grid_annotations(im, width, height, hor_texts, ver_texts, margin)
 
 
-def resize_image(resize_mode, im, width, height, upscaler_name=None):
+def resize_image(resize_mode, im, width, height, upscaler_name=None, force_RGBA=False):
     """
     Resizes an image with the specified resize_mode, width, and height.
 
@@ -267,7 +267,7 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
     upscaler_name = upscaler_name or opts.upscaler_for_img2img
 
     def resize(im, w, h):
-        if upscaler_name is None or upscaler_name == "None" or im.mode == 'L':
+        if upscaler_name is None or upscaler_name == "None" or im.mode == 'L' or force_RGBA:
             return im.resize((w, h), resample=LANCZOS)
 
         scale = max(w / im.width, h / im.height)
@@ -298,7 +298,7 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
         src_h = height if ratio <= src_ratio else im.height * width // im.width
 
         resized = resize(im, src_w, src_h)
-        res = Image.new("RGB", (width, height))
+        res = Image.new("RGB" if not force_RGBA else "RGBA", (width, height))
         res.paste(resized, box=(width // 2 - src_w // 2, height // 2 - src_h // 2))
 
     else:
@@ -309,7 +309,7 @@ def resize_image(resize_mode, im, width, height, upscaler_name=None):
         src_h = height if ratio >= src_ratio else im.height * width // im.width
 
         resized = resize(im, src_w, src_h)
-        res = Image.new("RGB", (width, height))
+        res = Image.new("RGB" if not force_RGBA else "RGBA", (width, height))
         res.paste(resized, box=(width // 2 - src_w // 2, height // 2 - src_h // 2))
 
         if ratio < src_ratio:
@@ -642,7 +642,7 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
             Additional PNG info. `existing_info == {pngsectionname: info, ...}`
         no_prompt:
             TODO I don't know its meaning.
-        p (`StableDiffusionProcessing`)
+        p (`StableDiffusionProcessing` or `Processing`)
         forced_filename (`str`):
             If specified, `basename` and filename pattern will be ignored.
         save_to_dirs (bool):
@@ -673,10 +673,13 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
     if forced_filename is None:
         if short_filename or seed is None:
             file_decoration = ""
-        elif opts.save_to_dirs:
-            file_decoration = opts.samples_filename_pattern or "[seed]"
+        elif hasattr(p, 'override_settings'):
+            file_decoration = p.override_settings.get("samples_filename_pattern")
         else:
-            file_decoration = opts.samples_filename_pattern or "[seed]-[prompt_spaces]"
+            file_decoration = None
+
+        if file_decoration is None:
+            file_decoration = opts.samples_filename_pattern or ("[seed]" if opts.save_to_dirs else "[seed]-[prompt_spaces]")
 
         file_decoration = namegen.apply(file_decoration) + suffix
 
@@ -718,12 +721,15 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
         save_image_with_geninfo(image_to_save, info, temp_file_path, extension, existing_pnginfo=params.pnginfo, pnginfo_section_name=pnginfo_section_name)
 
         filename = filename_without_extension + extension
+        without_extension = filename_without_extension
         if shared.opts.save_images_replace_action != "Replace":
             n = 0
             while os.path.exists(filename):
                 n += 1
-                filename = f"{filename_without_extension}-{n}{extension}"
+                without_extension = f"{filename_without_extension}-{n}"
+                filename = without_extension + extension
         os.replace(temp_file_path, filename)
+        return without_extension
 
     fullfn_without_extension, extension = os.path.splitext(params.filename)
     if hasattr(os, 'statvfs'):
@@ -731,8 +737,9 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
         fullfn_without_extension = fullfn_without_extension[:max_name_len - max(4, len(extension))]
         params.filename = fullfn_without_extension + extension
         fullfn = params.filename
-    _atomically_save_image(image, fullfn_without_extension, extension)
 
+    fullfn_without_extension = _atomically_save_image(image, fullfn_without_extension, extension)
+    fullfn = fullfn_without_extension + extension
     image.already_saved_as = fullfn
 
     oversize = image.width > opts.target_side_length or image.height > opts.target_side_length
@@ -751,7 +758,7 @@ def save_image(image, path, basename, seed=None, prompt=None, extension='png', i
             except Exception:
                 image = image.resize(resize_to)
         try:
-            _atomically_save_image(image, fullfn_without_extension, ".jpg")
+            _ = _atomically_save_image(image, fullfn_without_extension, ".jpg")
         except Exception as e:
             errors.display(e, "saving image as downscaled JPG")
 

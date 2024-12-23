@@ -485,7 +485,7 @@ el_ids = SoftInpaintingSettings(
 
 class Script(scripts.Script):
     def __init__(self):
-        self.section = "inpaint"
+        # self.section = "inpaint"
         self.masks_for_overlay = None
         self.overlay_images = None
 

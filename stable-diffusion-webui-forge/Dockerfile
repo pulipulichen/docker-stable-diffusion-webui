@@ -16,6 +16,10 @@ RUN pip install basicsr
 #RUN pip install https://download.pytorch.org/whl/nightly/rocm5.2/torch-2.0.0.dev20230209%2Brocm5.2-cp310-cp310-linux_x86_64.whl https://download.pytorch.org/whl/nightly/rocm5.2/torchvision-0.15.0.dev20230209%2Brocm5.2-cp310-cp310-linux_x86_64.whl
 RUN pip install -q bitsandbytes
 
+RUN pip -q install --upgrade fschat accelerate autoawq vllm
+
+RUN pip install torch==2.1.0+cu121 torchvision==0.16.0+cu121 torchaudio==2.1.0 torchtext==0.16.0+cpu torchdata==0.7.0 --index-url https://download.pytorch.org/whl/cu121
+
 # =========================
 
 RUN mkdir -p /app/stable-diffusion-webui-forge

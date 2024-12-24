@@ -20,7 +20,7 @@ services:
       #- "/dev/kfd:/dev/kfd"
 
     ports:
-      - 7860:7860
+      - 8188:8188
     
     volumes:
       - ./docker-start.sh:/app/docker-start.sh

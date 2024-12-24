@@ -48,6 +48,6 @@ services:
       - ./../collections/VAE:/app/ComfyUI/models/vae
       - ./../collections/VAE-approx:/app/ComfyUI/models/vae_approx
 
-      - ./../collections/outputs:/app/ComfyUI/output
+      - ./../collections/outputs/comfyui/:/app/ComfyUI/output
       # - ./../collections/ControlNet:/app/stable-diffusion-webui/extensions/sd-webui-controlnet/models
     

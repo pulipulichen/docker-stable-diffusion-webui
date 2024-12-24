@@ -47,6 +47,7 @@ services:
       - ./../collections/Stable-diffusion:/app/ComfyUI/models/checkpoints
       - ./../collections/VAE:/app/ComfyUI/models/vae
       - ./../collections/VAE-approx:/app/ComfyUI/models/vae_approx
+      - ./../collections/RMBG-2.0:/app/ComfyUI/models/RMBG-2.0
 
       - ./../collections/outputs/comfyui/:/app/ComfyUI/output
       # - ./../collections/ControlNet:/app/stable-diffusion-webui/extensions/sd-webui-controlnet/models

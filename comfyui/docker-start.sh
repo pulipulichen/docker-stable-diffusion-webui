@@ -14,4 +14,4 @@ cd "$script_dir"
 
 cd ComfyUI
 
-python main.py
+python main.py --listen 0.0.0.0

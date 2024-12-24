@@ -26,6 +26,9 @@ services:
       - ./docker-start.sh:/app/docker-start.sh
       - ./webui.sh:/app/webui.sh
       - ./ComfyUI:/app/ComfyUI
+
+      - ./../collections/custom_nodes:/app/ComfyUI/custom_nodes
+
       # - ./../collections/:/app/ComfyUI/models
       # - ./../collections/embeddings:/app/stable-diffusion-webui/embeddings
       - ./../collections/ControlNet:/app/ComfyUI/models/controlnet

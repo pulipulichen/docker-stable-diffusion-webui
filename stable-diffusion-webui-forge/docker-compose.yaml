@@ -16,8 +16,9 @@ services:
        reservations:
          devices:
            - driver: nvidia
-             count: all
+             count: 1
              capabilities: [gpu]
+             device_ids: ['${GPU_DEVICE_ID}']
 
     devices:
       - "/dev/dri:/dev/dri"
@@ -25,7 +26,7 @@ services:
       #- "/dev/kfd:/dev/kfd"
 
     ports:
-      - 7860:7860
+      - ${EXPOSE_PORT}:7860
     
     volumes:
       - ./docker-start.sh:/app/docker-start.sh
